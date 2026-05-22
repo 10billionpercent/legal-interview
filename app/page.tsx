@@ -2,14 +2,18 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+
 import {
-  Moon,
-  Sun,
   ReceiptText,
   Scale,
   CheckCheck,
   FileText,
 } from "lucide-react";
+
+import FloatingCard from "./components/FloatingCard";
+import MessageCard from "./components/MessageCard";
+import BackgroundPill from "./components/BackgroundPill";
+import ThemeToggle from "./components/ThemeToggle";
 
 export default function Page() {
   const [darkMode, setDarkMode] = useState(false);
@@ -20,15 +24,10 @@ export default function Page() {
         darkMode ? "bg-[#050816]" : "bg-[#f3f3f5]"
       }`}
     >
-      {/* TOGGLE */}
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className={`absolute top-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${
-          darkMode ? "bg-[#161D31] text-[#FFD54F]" : "bg-[#1b1b1b] text-white"
-        }`}
-      >
-        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-      </button>
+      <ThemeToggle
+        darkMode={darkMode}
+        toggle={() => setDarkMode(!darkMode)}
+      />
 
       <motion.section
         initial={{ opacity: 0, scale: 0.97 }}
@@ -41,52 +40,45 @@ export default function Page() {
           darkMode ? "bg-[#0B1020]" : "bg-[#f3f3f5]"
         }`}
       >
-        {/* SIDE BG PILLS */}
+        {/* BG PILLS */}
 
-        {/* LEFT */}
-        <div
-          className={`absolute left-[-11.1%] top-[47.6%] w-[15.3%] h-[11.4%] rounded-full transition-colors duration-500 ${
-            darkMode ? "bg-[#1C2338]" : "bg-[#dfe3ef]"
-          }`}
+        <BackgroundPill
+          darkMode={darkMode}
+          className="left-[-11.1%] top-[47.6%] w-[15.3%] h-[11.4%]"
         />
 
-        <div
-          className={`absolute left-[-7.6%] top-[64.1%] w-[27.2%] h-[11.4%] rounded-full transition-colors duration-500 ${
-            darkMode ? "bg-[#1C2338]" : "bg-[#dfe3ef]"
-          }`}
+        <BackgroundPill
+          darkMode={darkMode}
+          className="left-[-7.6%] top-[64.1%] w-[27.2%] h-[11.4%]"
         />
 
-        <div
-          className={`absolute left-[-7.4%] top-[79%] w-[31.9%] h-[11.4%] rounded-full transition-colors duration-500 ${
-            darkMode ? "bg-[#1C2338]" : "bg-[#dfe3ef]"
-          }`}
+        <BackgroundPill
+          darkMode={darkMode}
+          className="left-[-7.4%] top-[79%] w-[31.9%] h-[11.4%]"
         />
 
-        {/* RIGHT */}
-        <div
-          className={`absolute right-[-11.1%] top-[15.5%] w-[29.1%] h-[11.4%] rounded-full transition-colors duration-500 ${
-            darkMode ? "bg-[#1C2338]" : "bg-[#dfe3ef]"
-          }`}
+        <BackgroundPill
+          darkMode={darkMode}
+          className="right-[-11.1%] top-[15.5%] w-[29.1%] h-[11.4%]"
         />
 
-        <div
-          className={`absolute right-[-9.4%] top-[30.4%] w-[29.3%] h-[11.4%] rounded-full transition-colors duration-500 ${
-            darkMode ? "bg-[#1C2338]" : "bg-[#dfe3ef]"
-          }`}
+        <BackgroundPill
+          darkMode={darkMode}
+          className="right-[-9.4%] top-[30.4%] w-[29.3%] h-[11.4%]"
         />
 
-        <div
-          className={`absolute right-[-6.9%] top-[45.4%] w-[23.6%] h-[11.4%] rounded-full transition-colors duration-500 ${
-            darkMode ? "bg-[#1C2338]" : "bg-[#dfe3ef]"
-          }`}
+        <BackgroundPill
+          darkMode={darkMode}
+          className="right-[-6.9%] top-[45.4%] w-[23.6%] h-[11.4%]"
         />
 
         {/* TEXT */}
+
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.9 }}
-          className="absolute left-[10.4%] top-[6.6%] w-[58%] sm:w-auto"
+          className="absolute left-[10.4%] top-[6.6%] w-[58%]"
         >
           <h3
             className={`font-light tracking-[-0.06em] leading-[0.95] text-[clamp(2rem,6.8vw,74px)] transition-colors duration-500 ${
@@ -101,7 +93,7 @@ export default function Page() {
           </h3>
 
           <p
-            className={`mt-[7%] text-[clamp(0.7rem,1.55vw,17px)] leading-[1.4] max-w-[430px] transition-colors duration-500 ${
+            className={`mt-[7%] text-[17px] leading-[1.4] max-w-[430px] transition-colors duration-500 ${
               darkMode ? "text-[#5E72FF]" : "text-[#3C4BFF]"
             }`}
           >
@@ -113,163 +105,52 @@ export default function Page() {
           </p>
         </motion.div>
 
-        {/* BILLING */}
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            y: [0, -10, 0],
-          }}
-          transition={{
-            opacity: { duration: 0.8, delay: 0.3 },
-            x: { duration: 0.8, delay: 0.3 },
-            y: {
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
+        {/* FLOATING CARDS */}
+
+        <FloatingCard
+          label="Billing"
+          icon={ReceiptText}
+          bg="#3345FF"
+          text="#ffffff"
+          rotate="rotate-[10deg]"
           className="absolute right-[22%] top-[42.8%]"
-        >
-          <div className="rotate-[10deg] h-[clamp(42px,6.8vw,74px)] pl-[48px] pr-[140px] rounded-full bg-[#3345FF] flex items-center justify-start gap-[16px] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center text-white">
-              <ReceiptText size={22} strokeWidth={2.2} />
-            </div>
+          iconClassName="text-white"
+        />
 
-            <span className="text-white text-[clamp(12px,2vw,22px)] font-semibold tracking-[-0.5px]">
-              Billing
-            </span>
-          </div>
-        </motion.div>
-
-        {/* MATTERS */}
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            y: [0, -8, 0],
-          }}
-          transition={{
-            opacity: { duration: 0.8, delay: 0.45 },
-            x: { duration: 0.8, delay: 0.45 },
-            y: {
-              duration: 4.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
+        <FloatingCard
+          label="Matters"
+          icon={Scale}
+          bg="#E67D28"
+          text="#ffffff"
+          rotate="rotate-[-10deg]"
           className="absolute left-[21.1%] top-[62.2%]"
-        >
-          <div className="rotate-[-10deg] h-[clamp(42px,6.8vw,74px)] pl-[48px] pr-[110px] rounded-full bg-[#E67D28] flex items-center justify-start gap-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.14)]">
-            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center text-white">
-              <Scale size={22} strokeWidth={2.2} />
-            </div>
+          iconClassName="text-white"
+          floatY={8}
+        />
 
-            <span className="text-white text-[clamp(12px,1.85vw,20px)] font-semibold">
-              Matters
-            </span>
-          </div>
-        </motion.div>
+        <MessageCard />
 
-        {/* MESSAGE */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="absolute left-[46.8%] top-[62.2%] hidden sm:block"
-        >
-          <div className="bg-[#A7A8ED] h-[clamp(42px,6.8vw,72px)] rounded-full flex items-center pl-[20px] pr-[32px] gap-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.10)]">
-            <div className="w-[4px] h-[58%] rounded-full bg-[#F07B2D]" />
-
-            <img
-              src="https://i.pravatar.cc/100"
-              alt=""
-              className="w-[48px] h-[48px] rounded-full object-cover"
-            />
-
-            <div className="leading-tight">
-              <p className="text-[#333357] text-[15px] font-semibold">
-                John Doe - Portal
-              </p>
-
-              <p className="text-[#333357] text-[12px]">
-                Hey! Could you please review a
-                <br />
-                document for me?
-              </p>
-
-              <p className="text-[#333357] text-[11px] mt-[2px]">
-                MAT-2233 · 2 h ago
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* TASKS */}
-        <motion.div
-          initial={{ opacity: 0, y: 70 }}
-          animate={{
-            opacity: 1,
-            y: [0, -9, 0],
-          }}
-          transition={{
-            opacity: { duration: 0.8, delay: 0.8 },
-            y: {
-              duration: 4.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
+        <FloatingCard
+          label="Tasks"
+          icon={CheckCheck}
+          bg="#32214C"
+          text="#FF922D"
+          rotate=""
           className="absolute left-[33.8%] bottom-[12%]"
-        >
-          <div className="h-[72px] pl-[48px] pr-[120px] rounded-full bg-[#32214C] flex items-center justify-start gap-[16px] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-            <CheckCheck
-              size={28}
-              strokeWidth={2.4}
-              className="text-[#FF922D]"
-            />
+          iconClassName="text-[#FF922D]"
+          floatY={9}
+        />
 
-            <span className="text-[#FF922D] text-[20px] font-semibold">
-              Tasks
-            </span>
-          </div>
-        </motion.div>
-
-        {/* DOCUMENTS */}
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            y: [0, -12, 0],
-          }}
-          transition={{
-            opacity: { duration: 0.8, delay: 1 },
-            x: { duration: 0.8, delay: 1 },
-            y: {
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
+        <FloatingCard
+          label="Documents"
+          icon={FileText}
+          bg="#2F214B"
+          text="#FF922D"
+          rotate="rotate-[-8deg]"
           className="absolute right-[3.1%] bottom-[18.1%]"
-        >
-          <div className="rotate-[-8deg] h-[72px] pl-[48px] pr-[150px] rounded-full bg-[#2F214B] flex items-center justify-start gap-[16px] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center">
-              <FileText
-                size={22}
-                strokeWidth={2.2}
-                className="text-[#FF922D]"
-              />
-            </div>
-
-            <span className="text-[#FF922D] text-[20px] font-semibold">
-              Documents
-            </span>
-          </div>
-        </motion.div>
+          iconClassName="text-[#FF922D]"
+          floatY={12}
+        />
       </motion.section>
     </main>
   );
