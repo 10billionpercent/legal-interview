@@ -3,12 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import {
-  ReceiptText,
-  Scale,
-  CheckCheck,
-  FileText,
-} from "lucide-react";
+import { ReceiptText, Scale, CheckCheck, FileText } from "lucide-react";
 
 import FloatingCard from "./components/FloatingCard";
 import MessageCard from "./components/MessageCard";
@@ -24,10 +19,7 @@ export default function Page() {
         darkMode ? "bg-[#050816]" : "bg-[#f3f3f5]"
       }`}
     >
-      <ThemeToggle
-        darkMode={darkMode}
-        toggle={() => setDarkMode(!darkMode)}
-      />
+      <ThemeToggle darkMode={darkMode} toggle={() => setDarkMode(!darkMode)} />
 
       <motion.section
         initial={{ opacity: 0, scale: 0.97 }}
@@ -44,7 +36,8 @@ export default function Page() {
 
         <BackgroundPill
           darkMode={darkMode}
-          className="left-[-11.1%] top-[47.6%] w-[15.3%] h-[11.4%]"
+          className="left-[-11.1%] top-[47.6%] w-[20.3%] h-[11.4%]"
+          rotate="rotate-[-10deg]"
         />
 
         <BackgroundPill
@@ -60,6 +53,7 @@ export default function Page() {
         <BackgroundPill
           darkMode={darkMode}
           className="right-[-11.1%] top-[15.5%] w-[29.1%] h-[11.4%]"
+          rotate="rotate-[5deg]"
         />
 
         <BackgroundPill
