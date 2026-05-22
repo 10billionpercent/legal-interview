@@ -186,7 +186,7 @@ export default function Page() {
             <img
               src="https://i.pravatar.cc/100"
               alt=""
-              className="w-[48px] h-[48px] border-white object-cover"
+              className="w-[48px] h-[48px] rounded-full object-cover"
             />
 
             <div className="leading-tight">
