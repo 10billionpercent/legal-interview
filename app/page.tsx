@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Moon, Sun } from "lucide-react";
+import {
+  Moon,
+  Sun,
+  ReceiptText,
+  Scale,
+  CheckCheck,
+  FileText,
+} from "lucide-react";
 
 export default function Page() {
   const [darkMode, setDarkMode] = useState(false);
@@ -17,9 +24,7 @@ export default function Page() {
       <button
         onClick={() => setDarkMode(!darkMode)}
         className={`absolute top-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${
-          darkMode
-            ? "bg-[#161D31] text-[#FFD54F]"
-            : "bg-[#1b1b1b] text-white"
+          darkMode ? "bg-[#161D31] text-[#FFD54F]" : "bg-[#1b1b1b] text-white"
         }`}
       >
         {darkMode ? <Sun size={24} /> : <Moon size={24} />}
@@ -100,19 +105,11 @@ export default function Page() {
               darkMode ? "text-[#5E72FF]" : "text-[#3C4BFF]"
             }`}
           >
-            <span className="hidden sm:inline">
-              Track matters, coordinate schedules, manage
-              <br />
-              clients, centralize documents, and handle
-              <br />
-              communication – all in one system.
-            </span>
-
-            <span className="sm:hidden">
-              Track matters, coordinate schedules, manage clients,
-              centralize documents, and handle communication – all in
-              one system.
-            </span>
+            Track matters, coordinate schedules, manage
+            <br />
+            clients, centralize documents, and handle
+            <br />
+            communication – all in one system.
           </p>
         </motion.div>
 
@@ -123,7 +120,6 @@ export default function Page() {
             opacity: 1,
             x: 0,
             y: [0, -10, 0],
-            rotate: [10, 10, 10],
           }}
           transition={{
             opacity: { duration: 0.8, delay: 0.3 },
@@ -134,11 +130,11 @@ export default function Page() {
               ease: "easeInOut",
             },
           }}
-          className="absolute right-[27%] top-[42.8%]"
+          className="absolute right-[22%] top-[42.8%]"
         >
-          <div className="rotate-[10deg] h-[clamp(42px,6.8vw,74px)] pl-[48px] pr-[140px] rounded-full bg-[#3345FF] flex items-center justify-start gap-[clamp(8px,1.4vw,16px)] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-            <div className="w-[clamp(24px,4vw,44px)] h-[clamp(24px,4vw,44px)] rounded-full border-2 border-white flex items-center justify-center text-white text-[clamp(12px,2vw,22px)]">
-              $
+          <div className="rotate-[10deg] h-[clamp(42px,6.8vw,74px)] pl-[48px] pr-[140px] rounded-full bg-[#3345FF] flex items-center justify-start gap-[16px] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center text-white">
+              <ReceiptText size={22} strokeWidth={2.2} />
             </div>
 
             <span className="text-white text-[clamp(12px,2vw,22px)] font-semibold tracking-[-0.5px]">
@@ -154,7 +150,6 @@ export default function Page() {
             opacity: 1,
             x: 0,
             y: [0, -8, 0],
-            rotate: [-10, -10, -10],
           }}
           transition={{
             opacity: { duration: 0.8, delay: 0.45 },
@@ -165,11 +160,11 @@ export default function Page() {
               ease: "easeInOut",
             },
           }}
-          className="absolute left-[28.1%] top-[62.2%]"
+          className="absolute left-[21.1%] top-[62.2%]"
         >
-          <div className="rotate-[-10deg] h-[clamp(42px,6.8vw,74px)] pl-[48px] pr-[110px] rounded-full bg-[#E67D28] flex items-center justify-start gap-[clamp(8px,1.4vw,16px)] shadow-[0_10px_24px_rgba(0,0,0,0.14)]">
-            <div className="w-[clamp(22px,3.7vw,40px)] h-[clamp(22px,3.7vw,40px)] rounded-full border-2 border-white flex items-center justify-center text-white text-[clamp(10px,1.7vw,18px)]">
-              ◇
+          <div className="rotate-[-10deg] h-[clamp(42px,6.8vw,74px)] pl-[48px] pr-[110px] rounded-full bg-[#E67D28] flex items-center justify-start gap-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.14)]">
+            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center text-white">
+              <Scale size={22} strokeWidth={2.2} />
             </div>
 
             <span className="text-white text-[clamp(12px,1.85vw,20px)] font-semibold">
@@ -185,27 +180,27 @@ export default function Page() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="absolute left-[46.8%] top-[62.2%] hidden sm:block"
         >
-          <div className="bg-[#A7A8ED] h-[clamp(42px,6.8vw,72px)] rounded-full flex items-center pl-[clamp(10px,1.8vw,20px)] pr-[clamp(16px,2.5vw,32px)] gap-[clamp(8px,1.4vw,16px)] shadow-[0_10px_24px_rgba(0,0,0,0.10)]">
+          <div className="bg-[#A7A8ED] h-[clamp(42px,6.8vw,72px)] rounded-full flex items-center pl-[20px] pr-[32px] gap-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.10)]">
             <div className="w-[4px] h-[58%] rounded-full bg-[#F07B2D]" />
 
             <img
               src="https://i.pravatar.cc/100"
               alt=""
-              className="w-[clamp(28px,4.4vw,48px)] h-[clamp(28px,4.4vw,48px)] rounded-full border-2 border-white object-cover"
+              className="w-[48px] h-[48px] border-white object-cover"
             />
 
             <div className="leading-tight">
-              <p className="text-[#21212c] text-[clamp(8px,1.4vw,15px)] font-semibold">
+              <p className="text-[#333357] text-[15px] font-semibold">
                 John Doe - Portal
               </p>
 
-              <p className="text-[#21212c] text-[clamp(6px,1.1vw,12px)]">
+              <p className="text-[#333357] text-[12px]">
                 Hey! Could you please review a
                 <br />
                 document for me?
               </p>
 
-              <p className="text-[#21212c] text-[clamp(5px,1vw,11px)] mt-[2px]">
+              <p className="text-[#333357] text-[11px] mt-[2px]">
                 MAT-2233 · 2 h ago
               </p>
             </div>
@@ -229,12 +224,14 @@ export default function Page() {
           }}
           className="absolute left-[33.8%] bottom-[12%]"
         >
-          <div className="h-[clamp(42px,6.8vw,72px)] pl-[48px] pr-[120px] rounded-full bg-[#32214C] flex items-center justify-start gap-[clamp(8px,1.4vw,16px)] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-            <span className="text-[#FF922D] text-[clamp(14px,2.2vw,24px)]">
-              ✓
-            </span>
+          <div className="h-[72px] pl-[48px] pr-[120px] rounded-full bg-[#32214C] flex items-center justify-start gap-[16px] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+            <CheckCheck
+              size={28}
+              strokeWidth={2.4}
+              className="text-[#FF922D]"
+            />
 
-            <span className="text-[#FF922D] text-[clamp(12px,1.85vw,20px)] font-semibold">
+            <span className="text-[#FF922D] text-[20px] font-semibold">
               Tasks
             </span>
           </div>
@@ -247,7 +244,6 @@ export default function Page() {
             opacity: 1,
             x: 0,
             y: [0, -12, 0],
-            rotate: [-8, -8, -8],
           }}
           transition={{
             opacity: { duration: 0.8, delay: 1 },
@@ -258,14 +254,18 @@ export default function Page() {
               ease: "easeInOut",
             },
           }}
-          className="absolute right-[15.1%] bottom-[18.1%]"
+          className="absolute right-[3.1%] bottom-[18.1%]"
         >
-          <div className="rotate-[-8deg] h-[clamp(42px,6.8vw,72px)] pl-[48px] pr-[150px] rounded-full bg-[#2F214B] flex items-center justify-start gap-[clamp(8px,1.4vw,16px)] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
-            <div className="w-[clamp(22px,3.7vw,40px)] h-[clamp(22px,3.7vw,40px)] rounded-full border-2 border-[#FF922D] flex items-center justify-center text-[#FF922D] text-[clamp(10px,1.7vw,18px)]">
-              ▣
+          <div className="rotate-[-8deg] h-[72px] pl-[48px] pr-[150px] rounded-full bg-[#2F214B] flex items-center justify-start gap-[16px] shadow-[0_12px_28px_rgba(0,0,0,0.16)]">
+            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center">
+              <FileText
+                size={22}
+                strokeWidth={2.2}
+                className="text-[#FF922D]"
+              />
             </div>
 
-            <span className="text-[#FF922D] text-[clamp(12px,1.85vw,20px)] font-semibold">
+            <span className="text-[#FF922D] text-[20px] font-semibold">
               Documents
             </span>
           </div>
